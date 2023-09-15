@@ -7,70 +7,84 @@ function InteresCompuesto() {
 
   const calcularInteres = () => {
     const total = capital * Math.pow(1 + tasa, periodos);
-    setCapital(total);
+    setCapital(total.toFixed(2));
   };
+  // const reset = () => {
+  //   setCapital(0);
+  //   setTasa(0);
+  //   setPeriodos(0);
+  // };
   const reset = () => {
+    Array.from(document.querySelectorAll("input")).forEach(
+      (input) => (input.value = "")
+    );
+    this.setState({
+      itemvalues: [{}],
+    });
     setCapital(0);
     setTasa(0);
     setPeriodos(0);
   };
   return (
-    <div class="container w-1/3 mx-auto flex flex-col items-center justify-center md:mt-6 bg-zinc-400 rounded-2xl ">
-      <h1 class="text-2xl font-bold mb-4">Calculadora de interes compuesto</h1>
-
+    <div class="container md:w-1/4  mx-auto flex flex-col items-center justify-center md:mt-6 bg-white rounded-2xl ">
       <div class="my-4">
         <div class="w-full flex flex-col">
-          <label>
+          <img src="./invest.svg" alt="" class="mx-auto w-32 h-auto mb-4" />
+          <label class=" text-lg text-navy-700 dark:text-white font-bold mb-2">
             Capital inicial:
             <input
               type="number"
-              value={capital}
+              placeholder="Ej: 1000"
+              // value={capital}
               onChange={(e) => setCapital(e.target.value)}
-              class=" mx-2 rounded w-full p-1"
+              class=" mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-500 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
             />
           </label>
         </div>
 
         <div class="w-full flex flex-col">
-          <label>
+          <label class=" text-lg text-navy-700 dark:text-white font-bold mb-2">
             Tasa de interés anual:
             <input
               type="number"
-              value={tasa}
+              placeholder="Ej: 10"
+              // value={tasa}
               onChange={(e) => setTasa(e.target.value / 100 / 365)}
-              class="mx-2 rounded w-full p-1"
+              class="mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-500 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
             />
           </label>
         </div>
 
         <div class="w-full flex flex-col">
-          <label>
+          <label class=" text-lg text-navy-700 dark:text-white font-bold mb-2">
             Cantidad de días:
             <input
               type="number"
-              value={periodos}
+              placeholder="Ej: 365"
+              // value={periodos}
               onChange={(e) => setPeriodos(e.target.value)}
-              class=" mx-2 rounded p-1 w-full"
+              class=" mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-00 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
             />
           </label>
         </div>
       </div>
-
-      <div class="my-4">
-        <button
-          onClick={calcularInteres}
-          class=" flex-row justify-center  text-white cursor-pointer hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100 border"
-        >
-          Calcular
-        </button>
-      </div>
-      <div>
-        <button
-          onClick={reset}
-          class="flex-row justify-center  text-white cursor-pointer hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100 border"
-        >
-          Resetear
-        </button>
+      <div class="flex">
+        <div>
+          <button
+            onClick={calcularInteres}
+            class=" border border-cyan-500 bg-cyan-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-cyan-600 focus:outline-none focus:shadow-outline"
+          >
+            Calcular
+          </button>
+        </div>
+        <div>
+          <button
+            onClick={reset}
+            class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
+          >
+            Resetear
+          </button>
+        </div>
       </div>
       {/*
       <div class="my-4">
@@ -78,10 +92,18 @@ function InteresCompuesto() {
         <p class="text-xl">{total - capital}</p>
       </div> */}
 
-      <div class="my-4">
+      <div class="my-4 ">
         <h2 class="text-2xl font-bold mb-4">Capital final:</h2>
-        <p class="text-xl">{capital}</p>
+        <p class="text-xl border rounded-lg p-3 bg-cyan-300">{capital}</p>
       </div>
+      <p class="text-xs p-3 text-slate-600">
+        Nota: Esta calculadora de interés compuesto fue desarrollada con fines
+        educativos, bajo ningún concepto debe tomarse como una recomendación o
+        herramienta financiera.
+      </p>
+      <p class="text-xs text-right text-slate-500">
+        <span class="text-xs">©</span>ezerom 2023
+      </p>
     </div>
   );
 }

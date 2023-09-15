@@ -29,8 +29,11 @@ function InteresCompuesto() {
     <div class="container md:w-1/4  mx-auto flex flex-col items-center justify-center md:mt-6 bg-white rounded-2xl ">
       <div class="my-4">
         <div class="w-full flex flex-col">
+          <h1 class="text-xl font-semibold">
+            Calculadora de interés compuesto
+          </h1>
           <img src="./invest.svg" alt="" class="mx-auto w-32 h-auto mb-4" />
-          <label class=" text-lg text-navy-700 dark:text-white font-bold mb-2">
+          <label class=" text-lg text-navy-700 font-semibold mb-2">
             Capital inicial:
             <input
               type="number"
@@ -43,7 +46,7 @@ function InteresCompuesto() {
         </div>
 
         <div class="w-full flex flex-col">
-          <label class=" text-lg text-navy-700 dark:text-white font-bold mb-2">
+          <label class=" text-lg text-navy-700 font-semibold mb-2">
             Tasa de interés anual:
             <input
               type="number"
@@ -56,7 +59,7 @@ function InteresCompuesto() {
         </div>
 
         <div class="w-full flex flex-col">
-          <label class=" text-lg text-navy-700 dark:text-white font-bold mb-2">
+          <label class=" text-lg text-navy-700 font-semibold mb-2">
             Cantidad de días:
             <input
               type="number"
@@ -93,7 +96,7 @@ function InteresCompuesto() {
       </div> */}
 
       <div class="my-4 ">
-        <h2 class="text-2xl font-bold mb-4">Capital final:</h2>
+        <h2 class="text-xl font-bold mb-4">Capital final:</h2>
         <p class="text-xl border rounded-lg p-3 bg-cyan-300">{capital}</p>
       </div>
       <p class="text-xs p-3 text-slate-600">

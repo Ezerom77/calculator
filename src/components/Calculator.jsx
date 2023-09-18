@@ -4,10 +4,14 @@ function InteresCompuesto() {
   const [capital, setCapital] = useState(0);
   const [tasa, setTasa] = useState(0);
   const [periodos, setPeriodos] = useState(0);
+  const [capitalFinal, setCapitalFinal] = useState(0);
+  const [interesesGanadas, setInteresesGanadas] = useState(0);
 
   const calcularInteres = () => {
     const total = capital * Math.pow(1 + tasa, periodos);
-    setCapital(total.toFixed(2));
+    setCapitalFinal(total.toFixed(2));
+    const intereses = total - capital;
+    setInteresesGanadas(intereses.toFixed(2));
   };
   // const reset = () => {
   //   setCapital(0);
@@ -40,7 +44,7 @@ function InteresCompuesto() {
               placeholder="Ej: 1000"
               // value={capital}
               onChange={(e) => setCapital(e.target.value)}
-              class=" mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-500 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
+              class=" mt-1 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-500 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
             />
           </label>
         </div>
@@ -53,7 +57,7 @@ function InteresCompuesto() {
               placeholder="Ej: 10"
               // value={tasa}
               onChange={(e) => setTasa(e.target.value / 100 / 365)}
-              class="mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-500 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
+              class="mt-1 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-500 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
             />
           </label>
         </div>
@@ -66,7 +70,7 @@ function InteresCompuesto() {
               placeholder="Ej: 365"
               // value={periodos}
               onChange={(e) => setPeriodos(e.target.value)}
-              class=" mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-00 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
+              class=" mt-1 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-cyan-500 text-slate-00 placeholder:text-slate-300 dark:!border-cyan-400 dark:!text-cyan-400 dark:placeholder:!text-cyan-400"
             />
           </label>
         </div>
@@ -75,7 +79,7 @@ function InteresCompuesto() {
         <div>
           <button
             onClick={calcularInteres}
-            class=" border border-cyan-500 bg-cyan-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-cyan-600 focus:outline-none focus:shadow-outline"
+            class=" border border-cyan-500 bg-cyan-500 text-white rounded-md px-4 py-2 mx-2 transition duration-500 ease select-none hover:bg-cyan-600 focus:outline-none focus:shadow-outline"
           >
             Calcular
           </button>
@@ -83,21 +87,25 @@ function InteresCompuesto() {
         <div>
           <button
             onClick={reset}
-            class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
+            class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 mx-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
           >
             Resetear
           </button>
         </div>
       </div>
-      {/*
-      <div class="my-4">
-        <h2 class="text-2xl font-bold mb-4">Intereses Ganados:</h2>
-        <p class="text-xl">{total - capital}</p>
-      </div> */}
-
-      <div class="my-4 ">
-        <h2 class="text-xl font-bold mb-4">Capital final:</h2>
-        <p class="text-xl border rounded-lg p-3 bg-cyan-300">{capital}</p>
+      <div class="flex fle gap-2">
+        <div class="my-4 w-1/2 ">
+          <h2 class="text-lg font-bold mb-2">Capital final:</h2>
+          <p class="text-xl border rounded-lg p-3 bg-cyan-300 text-right">
+            {capitalFinal}
+          </p>
+        </div>
+        <div class="my-4 w-1/2">
+          <h2 class="text-lg font-bold mb-2">Int. Ganados:</h2>
+          <p class="text-xl border rounded-lg p-3 bg-cyan-300 text-right">
+            {interesesGanadas}
+          </p>
+        </div>
       </div>
       <p class="text-xs p-3 text-slate-600">
         Nota: Esta calculadora de interés compuesto fue desarrollada con fines

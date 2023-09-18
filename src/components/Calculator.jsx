@@ -28,6 +28,8 @@ function InteresCompuesto() {
     setCapital(0);
     setTasa(0);
     setPeriodos(0);
+    setCapitalFinal(0);
+    setInteresesGanadas(0);
   };
   return (
     <div class="container md:w-1/4  mx-auto flex flex-col items-center justify-center md:mt-6 bg-white rounded-2xl ">
@@ -93,17 +95,23 @@ function InteresCompuesto() {
           </button>
         </div>
       </div>
-      <div class="flex fle gap-2">
-        <div class="my-4 w-1/2 ">
+      <div class="container flex">
+        <div class="my-2 w-1/2 px-3">
           <h2 class="text-lg font-bold mb-2">Capital final:</h2>
           <p class="text-xl border rounded-lg p-3 bg-cyan-300 text-right">
-            {capitalFinal}
+            {new Intl.NumberFormat("es-AR", {
+              style: "currency",
+              currency: "ARS",
+            }).format(capitalFinal)}
           </p>
         </div>
-        <div class="my-4 w-1/2">
+        <div class="my-2 w-1/2 px-3">
           <h2 class="text-lg font-bold mb-2">Int. Ganados:</h2>
           <p class="text-xl border rounded-lg p-3 bg-cyan-300 text-right">
-            {interesesGanadas}
+            {new Intl.NumberFormat("es-AR", {
+              style: "currency",
+              currency: "ARS",
+            }).format(interesesGanadas)}
           </p>
         </div>
       </div>
@@ -112,9 +120,11 @@ function InteresCompuesto() {
         educativos, bajo ningún concepto debe tomarse como una recomendación o
         herramienta financiera.
       </p>
-      <p class="text-xs text-right text-slate-500">
-        <span class="text-xs">©</span>ezerom 2023
-      </p>
+      <a href="https://twitter.com/ezerom77">
+        <p class="text-xs text-right text-slate-500">
+          <span class="text-xs">©</span>ezerom 2023
+        </p>
+      </a>
     </div>
   );
 }
